@@ -40,11 +40,20 @@ public class Login extends AppCompatActivity {
                     Log.d("AuthenticationResult", "Not authenticated");
                 }*/
 
-                Log.d("Botao clicado", "clicou");
+                //Log.d("Botao clicado", "clicou");
 
                 auth.authenticate(getApplicationContext());
 
+
             }
         });
+    }
+
+    public static void logado() {
+        Log.d("result", "user logado");
+    }
+
+    public static void naoLogado() {
+        Log.d("result", "user nao logado");
     }
 }

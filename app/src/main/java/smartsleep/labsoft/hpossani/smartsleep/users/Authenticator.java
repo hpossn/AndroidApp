@@ -15,6 +15,8 @@ import com.android.volley.toolbox.Volley;
 import java.util.HashMap;
 import java.util.Map;
 
+import smartsleep.labsoft.hpossani.smartsleep.Login;
+
 /**
  * Created by hpossani on 08/10/16.
  */
@@ -32,11 +34,19 @@ public class Authenticator {
         RequestQueue queue = Volley.newRequestQueue(ctx);
         String url = "http://104.236.90.130:8000/restAPI/login";
 
+        final Status status = new Status(user, false);
+
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Log.d("result", response.toString());
+                        if(response.toString().contains("Login Okay")) {
+                            status.logar();
+                            Login.logado();
+                        } else {
+                            Login.naoLogado();
+                        }
+
                     }
                 }, new Response.ErrorListener() {
             @Override
